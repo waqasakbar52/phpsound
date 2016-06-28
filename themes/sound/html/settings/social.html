@@ -1,0 +1,76 @@
+{$message}
+<form action="{$url}/index.php?a=settings&b=social" method="post">
+<div class="page-inner">
+	{$token_input}
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_facebook}</div>
+		<div class="page-input-content">
+			<input type="text" name="facebook" value="{$currentFacebook}" />
+			<div class="page-input-sub">{$lng->sub_facebook}</div>
+		</div>
+	</div>
+
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_twitter}</div>
+		<div class="page-input-content"><input type="text" name="twitter" value="{$currentTwitter}" />
+		<div class="page-input-sub">{$lng->sub_twitter}</div>
+		</div>
+	</div>
+
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_google}</div>
+		<div class="page-input-content"><input type="text" name="gplus" value="{$currentGplus}" />
+		<div class="page-input-sub">{$lng->sub_google}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_youtube}</div>
+		<div class="page-input-content"><input type="text" name="youtube" value="{$currentYouTube}" />
+		<div class="page-input-sub">{$lng->sub_youtube}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_soundcloud}</div>
+		<div class="page-input-content"><input type="text" name="soundcloud" value="{$currentSoundCloud}" />
+		<div class="page-input-sub">{$lng->sub_soundcloud}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_myspace}</div>
+		<div class="page-input-content"><input type="text" name="myspace" value="{$currentMySpace}" />
+		<div class="page-input-sub">{$lng->sub_myspace}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_lastfm}</div>
+		<div class="page-input-content"><input type="text" name="lastfm" value="{$currentLastfm}" />
+		<div class="page-input-sub">{$lng->sub_lastfm}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_vimeo}</div>
+		<div class="page-input-content"><input type="text" name="vimeo" value="{$currentVimeo}" />
+		<div class="page-input-sub">{$lng->sub_vimeo}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_tumblr}</div>
+		<div class="page-input-content"><input type="text" name="tumblr" value="{$currentTumblr}" />
+		<div class="page-input-sub">{$lng->sub_tumblr}</div>
+		</div>
+	</div>
+</div>
+<div class="divider"></div>
+<div class="page-inner">
+	<div class="page-input-title"></div>
+	<div class="page-input-content">
+		<input type="submit" value="{$lng->save_changes}" />
+	</div>
+</div>
+</form>

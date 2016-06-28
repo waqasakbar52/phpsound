@@ -1,0 +1,58 @@
+<div class="go-pro-header">
+	<div class="go-pro-header-title">{$footer_title} {$lng->go_pro}</div>
+	<div class="go-pro-header-desc">{$lng->go_pro_desc}</div>
+</div>
+<div class="page-content">
+	{$error}
+	<div style="0 auto 0 auto; padding: 15px 15px 5px 15px; text-align: center;">
+		<form id="gopro-form" method="post">
+			<select name="plan" class="plan-options">
+				<option value="0">{$promonth} {$currency} - 1 {$lng->month}</option>
+				<option value="1">{$proyear} {$currency} - 1 {$lng->year}</option>
+			</select>
+			<div class="go-pro-btn go-pro-go-pro-btn"><a onclick="{$go_pro_action}">{$lng->go_pro}</a></div>
+		</form>
+	</div>
+	
+	<div style="margin: 20px; padding: 15px;">
+		<div class="feature-option">{$lng->features}</div>
+		<div class="plan-option plan-option-free">{$lng->plan_0}</div>
+		<div class="plan-option plan-option-pro">{$lng->plan_1}</div>
+	</div>
+	
+	<div class="feature-container">
+		<div class="feature-option">{$lng->total_space}</div>
+		<div class="plan-option plan-option-free">{$tracksizetotal}</div>
+		<div class="plan-option plan-option-pro">{$protracktotal}</div>
+	</div>
+	<div class="feature-description">{$lng->total_space_desc}</div>
+	
+	<div class="feature-container">
+		<div class="feature-option">{$lng->track_size}</div>
+		<div class="plan-option plan-option-free">{$tracksize}</div>
+		<div class="plan-option plan-option-pro">{$protracksize}</div>
+	</div>
+	<div class="feature-description">{$lng->track_size_desc}</div>
+	
+	<div class="feature-container">
+		<div class="feature-option">{$lng->basic_stats}</div>
+		<div class="plan-option plan-option-free">{$lng->yes}</div>
+		<div class="plan-option plan-option-pro">{$lng->yes}</div>
+	</div>
+	<div class="feature-description">{$lng->basic_stats_desc}</div>
+	
+	<div class="feature-container">
+		<div class="feature-option">{$lng->extended_stats}</div>
+		<div class="plan-option plan-option-free">{$lng->no}</div>
+		<div class="plan-option plan-option-pro">{$lng->yes}</div>
+	</div>
+	<div class="feature-description">{$lng->extended_stats_desc}</div>
+	
+	<div class="feature-container">
+		<div class="feature-option">{$lng->pro_badge} <span class="pro-icon pro-small"></span></div>
+		<div class="plan-option plan-option-free">{$lng->no}</div>
+		<div class="plan-option plan-option-pro">{$lng->yes}</div>
+	</div>
+	<div class="feature-description">{$lng->pro_badge_desc}</div>
+</div>
+{$history}

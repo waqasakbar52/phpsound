@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>{$title}</title>
+<meta name="description" content="{$meta_description}">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="shortcut icon" href="{$url}/favicon.ico">
+<link href="{$url}/{$theme_path}/{$theme_name}/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">baseUrl = '{$url}'; token_id = '{$token_id}'; nowPlaying = 0; player_volume = {$volume};</script>
+<script type="text/javascript" src="{$url}/{$theme_url}/js/jquery.js"></script>
+<script type="text/javascript" src="{$url}/{$theme_url}/js/jquery.timeago.js"></script>
+<script type="text/javascript" src="{$url}/{$theme_url}/js/functions.js"></script>
+<script type="text/javascript" src="{$url}/{$theme_url}/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="{$url}/{$theme_url}/js/soundcloud-waveform.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#sound-player").jPlayer({
+		cssSelectorAncestor: '#sound-container',
+		play: function() {
+			// Add the play count
+			$.ajax({
+				type: "POST",
+				url: "{$url}/requests/add_view.php",
+				data: "id="+nowPlaying+"&token_id="+token_id, 
+				cache: false
+			});
+		},
+		ended: function () {
+			// If repeat is not turned on, move to the next song
+			if($('#repeat-song').html() == 0) {
+				$('.current-seek').html($('#sound_ghost_player').html());
+				$('.current-play').show();
+				nextSong(nowPlaying);
+			}
+		},
+		swfPath: "{$url}/{$theme_url}/js",
+		supplied: "mp3,m4a",
+		wmode: "window",
+		volume: player_volume,
+		smoothPlayBar: true,
+		keyEnabled: true
+	});
+});
+function updateTrackInfo(id) {
+	// If there's a track id
+	if(id > 0) {
+		// Add the current song class
+		$('#track'+id).addClass('current-song');
+
+		// Add current play class to the Play button and hide it
+		$('#play'+id).addClass('current-play');
+		$('.current-play').hide();
+
+		$('.jp-audio .jp-time-holder').show();
+
+		// Add the active player to the current song
+		$("#song-controls"+id).html($("#seek-bar-song").html());
+
+		// Add the active player class to the current song
+		$("#song-controls"+id).addClass('current-seek');
+
+		// Set the play/pause button position (this is needed for mobile view in order for the play/pause button to be at the same height with the initial play button)
+		$('#track'+id+' .jp-play , #track'+id+' .jp-pause').css({ 'margin-top' : '-' + $('.song-top', '#track'+id).outerHeight() + 'px' });
+
+		prevnext();
+
+		// Bind functionality to the new song selector
+		$("#sound-player").jPlayer("option", "cssSelectorAncestor", '#sound-container');
+	}
+}
+function playSong(song, id) {
+	// If the user is on a mobile device, open the track in a new tab rather than playing it on the page
+	/*if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		window.location = '{$url}/uploads/tracks/'+song;
+		return false;
+	}*/
+	
+	// Remove the current-song class (if any)
+	$('.current-song').removeClass('current-song');
+	// Show the previously hidden Play button (if any)
+	$('.current-play').show();
+	$('.current-play').removeClass('current-play');
+	
+	// Remove the active player if exists and set the ghost player
+	$('.current-seek').html($('#sound_ghost_player').html());
+	
+	// Remove the active player class
+	$('.current-seek').removeClass('current-seek');
+	
+	// Define the current playing track
+	nowPlaying = id;
+	
+	// Update the track listing
+	updateTrackInfo(nowPlaying);
+	prevnext(3);
+	
+	// Get the current song name, url and author
+	var trackUrl = $('#song-url'+id).attr('href');
+	var artwork = $('#song-art'+id).attr('src');
+	var songName, shortSongName = songName = $('#song-name'+id).html();
+	var songAuthor = $('#song-author'+id).text();
+	var songAuthorUrl = $('#song-author'+id).attr('href');
+	
+	if(songName.length > 30) {
+		var shortSongName = $('#song-name'+id).html();
+	}
+	
+	$('#sw-song-name').html($('<a>', {text: shortSongName, href: trackUrl, title: songName, rel: 'loadpage'}));
+	$('#sw-author-name').html($('<a>', {text: songAuthor, href: songAuthorUrl, title: songAuthor, rel: 'loadpage'}));
+	
+	$('#topbar-artwork').html($('<a>', {href: trackUrl, rel: 'loadpage', id: 'artwork-container'}));
+	$('#artwork-container').html('<img src="'+artwork+'">');
+	
+	// Get the track extension
+	var ext = getExtension(song);
+
+	if(ext == 'mp3') {
+		$("#sound-player").jPlayer("setMedia",{mp3: song}).jPlayer("play");
+	} else if(ext == 'm4a') {
+		$("#sound-player").jPlayer("setMedia",{m4a:baseUrl+'/uploads/tracks/'+song}).jPlayer("play");
+	}
+}
+getWaveForm();
+function getWaveForm(fileId,api_key,file){
+		//var fileId = "0B6g5gz5gBBIWZVp0cDl0U0VTTHM";
+		//var api_key = "AIzaSyA-eWdDsY9YATEqbHg8H_gjnqMCeyDcurc";
+		console.log(url);
+		var url = baseUrl+"2776.mp3";
+		SoundCloudWaveform.generate(url, {
+				onComplete: function(png, pixels) {
+				
+			}
+		});
+}
+</script>
+{$open_graph}
+</head>
+<body>
+
+<div id="loading-bar"><dd></dd><dt></dt></div>
+<div class="topbar">
+	<div class="header">
+		<a href="{$url_menu}" rel="loadpage"><div class="logo"></div></a>
+		{$menu_buttons}
+		<div class="search-input"><input type="text" id="search" placeholder="{$lng->search_for_people}" autocomplete="off"></div>
+		{$menu}
+	</div>
+	<div class="search-container"></div>
+	<div class="notification-container">
+		<div class="notification-content">
+			<div class="notification-inner">
+				<span id="global_page_url"><a href="{$url}/index.php?a=notifications" rel="loadpage">{$lng->view_all_notifications}</a></span>
+				<span id="chat_page_url"><a href="{$url}/index.php?a=notifications&filter=chats" rel="loadpage">{$lng->view_chat_notifications}</a></span>
+				<a onclick="showNotification('close')" title="{$lng->close_notifications}"><div class="close_btn"></div></a>
+			</div>
+			<div id="notifications-content"></div>
+			<div class="notification-row"><div class="notification-padding"><a href="{$url}/index.php?a=settings&b=notifications" rel="loadpage">{$lng->notifications_settings}</a></div></div>
+		</div>
+	</div>
+</div>
+<div class="topbar_margin"></div>
+<div id="content">
+	{$content}
+</div>
+<div id="connect" style="display: none;">
+	<div class="modal-container">
+		<div class="modal-title" id="share-title">
+			<div class="modal-menu-container">
+				<div class="modal-menu-item modal-menu-item-active" id="tab-login">{$lng->login}</div>
+				<div class="modal-menu-item" id="tab-register">{$lng->register}</div>
+				<div class="modal-loading"></div>
+			</div>
+		</div>
+		<div class="divider"></div>
+		<div class="tab-login">
+			<div id="login-message"></div>
+			<div class="modal-inner">
+				<form id="login-form" method="post">
+				<div class="modal-input modal-connect">	
+					<input type="text" id="short" name="username" placeholder="{$lng->username_or_email}">
+					<input type="password" id="short" name="password" placeholder="{$lng->password}">
+				</div>
+				<div class="modal-checkbox"><input type="checkbox" name="remember" value="1" id="remember-me"><label for="remember-me">{$lng->remember_me}</label></div>
+				<input type="submit" style="display: none;"><!-- submit button used to enable the enter key -->
+				</form>
+				<div class="forgot-password"><a href="{$url}/index.php?a=recover" rel="loadpage">{$lng->forgot_password}</a></div>
+			</div>
+			<div class="divider"></div>
+			<div class="modal-menu">
+				<div class="modal-btn modal-btn-active"><a id="login-button" onclick="connect(1)">{$lng->login}</a></div>{$fblogin}
+			</div>
+		</div>
+		<div class="tab-register">
+			<div id="register-message"></div>
+			<div class="modal-inner">
+				<div class="modal-input modal-connect">
+					<form id="register-form" method="post">
+					<input type="text" id="short" name="username" placeholder="{$lng->username}">
+					<input type="password" id="short" name="password" placeholder="{$lng->password}">
+					<input type="text" id="short" name="email" placeholder="{$lng->email}">
+					{$captcha}
+					<input type="submit" style="display: none;"><!-- submit button used to enable the enter key -->
+					</form>
+				</div>
+			</div>
+			<div class="divider"></div>
+			<div class="modal-menu">
+				<div class="modal-btn modal-btn-active"><a id="register-button" onclick="connect(0)">{$lng->register}</a></div>{$fblogin}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal-background"></div>
+<div class="row-body">
+	<div class="footer">
+		<div class="footer-container">
+			<div class="footer-links">
+				<a href="{$url}/index.php?a=page&b=tos" rel="loadpage">{$lng->terms_of_use}</a> - 
+				<a href="{$url}/index.php?a=page&b=privacy" rel="loadpage">{$lng->privacy_policy}</a> - 
+				<a href="{$url}/index.php?a=page&b=disclaimer" rel="loadpage">{$lng->disclaimer}</a> - 
+				<a href="{$url}/index.php?a=page&b=api" rel="loadpage">{$lng->developers}</a> - 
+				<a href="{$url}/index.php?a=page&b=contact" rel="loadpage">{$lng->contact}</a> - 
+				<a href="{$url}/index.php?a=page&b=about" rel="loadpage">{$lng->about}</a> - 
+				<a href="{$url}/index.php?a=admin" rel="loadpage">{$lng->title_admin}</a>
+			</div>
+			<div class="footer-languages">
+				{$lng->language}: {$language}
+			</div>
+			<div class="footer-languages">
+				Copyright &copy; {$year} {$site_title}. {$lng->all_rights_reserved}. {$powered_by}
+			</div>
+			<div id="fileupload" style = "width:500px;height:600px">
+		</div>
+	</div>
+</div>
+<div class="bottombar">
+	<div class="bottombar-container">
+		<div id="sound-player" class="jp-jplayer"></div>
+		<div id="sound-container" class="jp-audio top-player">
+			<div class="player-nine">
+				<div class="jp-type-single">
+					<div class="jp-gui jp-interface">
+						<div class="player-container-left">
+							<a onclick="prevnext(1)" id="prev-button" class="prev-button" title="{$lng->prev_track}"></a>
+							<a class="jp-play" tabindex="1" title="{$lng->play}"></a>
+							<a class="jp-pause" tabindex="1" title="{$lng->pause}"></a>
+							<a onclick="prevnext(2)" id="next-button" class="next-button" title="{$lng->next_track}"></a>
+							
+							<a class="jp-repeat" tabindex="1" title="{$lng->repeat}" onclick="repeatSong(1)"></a>
+							<a class="jp-repeat-off" tabindex="1" title="{$lng->repeat_off}" onclick="repeatSong(0)"></a>
+							<div style="display: none;" id="repeat-song">0</div>
+							<div class="jp-current-time" id="current-time"></div>
+						</div>
+						<div class="player-container-middle">
+							
+							<div class="jp-progress">
+								<div class="jp-seek-bar">
+									<div class="jp-play-bar"></div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="player-container-right">
+							<div class="jp-duration" id="duration-time"></div>
+							<a class="jp-mute" tabindex="1" title="{$lng->mute}"></a>
+							<a class="jp-unmute" tabindex="1" title="{$lng->unmute}"></a>
+							
+							<div class="jp-volume-bar" onclick="playerVolume()" title="{$lng->volume}">
+								<div class="jp-volume-bar-value"></div>
+							</div>
+						</div>
+					</div>
+				<div class="jp-no-solution"></div>
+			</div>
+			</div>
+			<div class="player-three">
+				<div id="topbar-track-info">
+					<div id="topbar-artwork"></div>
+					<div id="topbar-track-details">
+						<div class="topbar-song-name" id="sw-song-name"></div>
+						<div class="topbar-author-name" id="sw-author-name"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="seek-bar-song" style="display: none;">
+	<div id="sound-container" class="jp-audio">
+		<div class="jp-type-single">
+			<div class="jp-gui jp-interface">
+				<a class="jp-play">&nbsp;</a><a class="jp-pause">&nbsp;</a>
+				<div class="jp-progress">
+					<div class="jp-seek-bar">
+						<div class="jp-play-bar"></div>
+					</div>
+				</div>
+				<div class="jp-time-holder">
+					<div class="jp-current-time"></div>
+					<div class="jp-duration"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="sound_ghost_player" style="display: none;"><div class="jp-audio"><div class="jp-type-single"><div class="jp-gui jp-interface"><div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div></div></div></div></div>
+{$tracking_code}
+</body>
+<script>
+
+
+</script>
+</html>

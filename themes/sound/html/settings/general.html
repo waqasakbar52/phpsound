@@ -1,0 +1,94 @@
+{$message}
+<form action="{$url}/index.php?a=settings" method="post">
+<div class="page-inner">
+	{$token_input}
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_first_name}</div>
+		<div class="page-input-content">
+			<input type="text" name="first_name" value="{$currentFirstName}" />
+			<div class="page-input-sub">{$lng->sub_first_name}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_last_name}</div>
+		<div class="page-input-content">
+			<input type="text" name="last_name" value="{$currentLastName}" />
+			<div class="page-input-sub">{$lng->sub_last_name}</div>
+		</div>
+	</div>
+
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_email}</div>
+		<div class="page-input-content">
+			<input type="text" name="email" value="{$currentEmail}" />
+			<div class="page-input-sub">{$lng->sub_email}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+	<div class="page-input-title">{$lng->ttl_country}</div>
+		<div class="page-input-content">
+		<select name="country">
+			{$countries}
+		</select>
+		<div class="page-input-sub">{$lng->sub_country}</div>
+		</div>
+	</div>
+
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_city}</div>
+		<div class="page-input-content">
+			<input type="text" name="city" value="{$currentCity}" />
+			<div class="page-input-sub">{$lng->sub_city}</div>
+		</div>
+	</div>
+
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_website}</div>
+		<div class="page-input-content">
+			<input type="text" name="website" value="{$currentWebsite}" />
+			<div class="page-input-sub">{$lng->sub_website}</div>
+		</div>
+	</div>
+</div>
+<div class="divider"></div>
+<div class="page-inner">
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_profile}</div>
+		<div class="page-input-content">
+		<select name="private">
+			<option value="0" {$off}>{$lng->opt_public}</option>
+			<option value="1" {$on}>{$lng->opt_private}</option>
+			<option value="2" {$semi}>{$lng->opt_semi_private}</option>
+		</select>
+		<div class="page-input-sub">{$lng->sub_profile}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_offline}</div>
+		<div class="page-input-content">
+		<select name="offline">
+			<option value="0" {$coff}>{$lng->opt_offline_off}</option>
+			<option value="1" {$con}>{$lng->opt_offline_on}</option>
+		</select>
+		<div class="page-input-sub">{$lng->sub_offline}</div>
+		</div>
+	</div>
+</div>
+<div class="divider"></div>
+<div class="page-inner">
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_description}</div>
+		<div class="page-input-content">
+			<textarea class="ads" name="description">{$currentDescription}</textarea>
+			<div class="page-input-sub">{$lng->sub_description}</div>
+		</div>
+	</div>
+</div>
+<div class="divider"></div>
+<div class="page-inner">
+	<div class="page-input-title"></div><input type="submit" value="{$lng->save_changes}" />
+</div>
+</form>

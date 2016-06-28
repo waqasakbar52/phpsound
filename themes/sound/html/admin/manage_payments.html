@@ -1,0 +1,18 @@
+{$message}
+<div class="page-inner">
+	<div class="page-input-container">
+		<div class="page-input-content page-input-left">
+			<form action="{$url}/index.php" method="GET">
+				<input type="hidden" name="a" value="admin">
+				<input type="hidden" name="b" value="payments">
+				<input type="text" name="id" value="" placeholder="{$lng->payment_id}"> &nbsp; <input type="submit" value="{$lng->view}">
+				<div class="page-input-sub">{$lng->enter_payment_id}</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="divider"></div>
+<div class="list-content">
+	{$payments}
+	<div id="payments"></div>
+</div>

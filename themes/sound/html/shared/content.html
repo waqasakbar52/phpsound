@@ -1,0 +1,108 @@
+<div class="row-body{$content_class}">
+	<div class="body-content">
+		{$cover}
+		<div class="nine columns" id="main-content">
+			{$top}
+			{$header}
+			<div id="profile-card"></div>
+			{$rows}
+		</div>
+		<div class="three columns">
+			{$sidebar}
+		</div>
+	</div>
+</div>
+<div id="share" style="display: none;">
+	<div class="modal-container">
+		<div class="modal-title" id="share-title">
+			<div class="modal-menu-container">
+				<div class="modal-menu-item modal-menu-item-active" id="tab-share">{$lng->share}</div>
+				<div class="modal-menu-item" id="tab-embed">{$lng->embed}</div>
+			</div>
+		</div>
+		<div class="divider"></div>
+		<div class="tab-share">
+			<div class="modal-inner">
+				<div class="modal-desc">{$lng->share_sn}</div>
+				<div class="share-icon-container"><div class="social-icon-padding"><a id="fb-share" title="{$lng->share_facebook}"><div class="share-social-icon facebook-icon"></div></a></div></div>
+				<div class="share-icon-container"><div class="social-icon-padding"><a id="tw-share" title="{$lng->share_twitter}"><div class="share-social-icon twitter-icon"></div></a></div></div>
+				<div class="share-icon-container"><div class="social-icon-padding"><a id="gp-share" title="{$lng->share_gplus}"><div class="share-social-icon gplus-icon"></div></a></div></div>
+				<div class="share-icon-container"><div class="social-icon-padding"><a id="pn-share" title="{$lng->share_pinterest}"><div class="share-social-icon pinterest-icon"></div></a></div></div>
+				<div class="share-icon-container"><div class="social-icon-padding"><a id="em-share" title="{$lng->share_email}"><div class="share-social-icon email-icon"></div></a></div></div>
+			</div>
+			<div class="modal-inner">
+				<div class="modal-desc">{$lng->share_url}</div>
+				<div class="modal-input"><input id="share-url" value="" readonly="readonly"></div>
+			</div>
+		</div>
+		<div class="tab-embed">
+			<div class="modal-inner">
+				<div class="dummy-player">
+					<div class="dummy-artwork"></div>
+					<div class="dummy-play-btn"></div>
+					<div class="dummy-author"></div>
+					<div class="dummy-title"></div>
+					<div class="dummy-seek"></div>
+					<div class="dummy-avatars"></div>
+					<div class="dummy-avatars"></div>
+					<div class="dummy-avatars"></div>
+					<div class="dummy-avatars"></div>
+					<div class="dummy-avatars"></div>
+				</div>
+				<div class="modal-desc">{$lng->embed_code}</div>
+				<div class="modal-input"><input id="embed-url" value="" readonly="readonly"></div>
+				<div class="modal-checkbox"><input type="checkbox" name="autoplay" id="autoplay"><label for="autoplay">{$lng->autoplay}</label></div>
+			</div>
+		</div>
+		<div class="divider"></div>
+		<div class="modal-menu">
+			<div class="modal-btn"><a onclick="share(0, 0)">{$lng->close}</a></div>
+		</div>
+	</div>
+</div>
+<div id="playlist" style="display: none;">
+	<div class="modal-container">
+		<div class="modal-title" id="share-title">
+			<div class="modal-menu-container">
+				<div class="modal-menu-item modal-menu-item-active" id="tab-playlist">{$lng->playlist}</div>
+				<div class="modal-loading"></div>
+			</div>
+		</div>
+		<div class="divider"></div>
+		<div class="tab-playlist">
+			<div class="modal-inner">
+				<input type="text" id="playlist-name" class="playlist-input" placeholder="{$lng->new_playlist}"><div onclick="playlist(0, 2)" class="button-normal playlist-save" id="playlist-save">{$lng->save}</div>
+			</div>
+			<div class="modal-inner" id="playlists">
+				
+			</div>
+		</div>	
+		<div class="divider"></div>
+		<div class="modal-menu">
+			<div class="modal-btn"><a onclick="playlist(0, 0)">{$lng->close}</a></div>
+		</div>
+	</div>
+</div>
+<div id="delete" style="display: none;">
+	<div class="modal-container">
+		<div class="modal-title" id="share-title">
+			<div class="modal-menu-container">
+				<div class="modal-menu-item modal-menu-item-active" id="tab-delete">{$lng->delete}</div>
+				<div class="modal-loading"></div>
+			</div>
+		</div>
+		<div class="divider"></div>
+		<div class="tab-delete">
+			<div class="modal-inner" id="delete-track" style="display: none;">
+				{$lng->delete_track_desc}
+			</div>
+			<div class="modal-inner" id="delete-playlist" style="display: none;">
+				{$lng->delete_playlist_desc}
+			</div>
+		</div>	
+		<div class="divider"></div>
+		<div class="modal-menu">
+			<div class="modal-btn modal-btn-active"><a id="delete-button">{$lng->delete}</a></div><div class="modal-btn"><a onclick="delete_modal(0, 'cancel')">{$lng->cancel}</a></div>
+		</div>
+	</div>
+</div>

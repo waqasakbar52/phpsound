@@ -1,0 +1,113 @@
+{$message}
+<form action="{$url}/index.php?a=admin&b=pro" method="post">
+<div class="page-inner">
+	{$token_input}
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->admin_ttl_ppapp}</div>
+		<div class="page-input-content">
+			<select name="paypalapp">
+				<option value="0" {$ppappoff}>{$lng->off}</option>
+				<option value="1" {$ppappon}>{$lng->on}</option>
+			</select>
+			<div class="page-input-sub">{$lng->admin_sub_ppapp}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->admin_ttl_ppuser}</div>
+		<div class="page-input-content">
+			<input type="text" name="paypaluser" value="{$ppuser}">
+			<div class="page-input-sub">{$lng->admin_sub_ppuser}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->admin_ttl_pppass}</div>
+		<div class="page-input-content">
+			<input type="text" name="paypalpass" value="{$pppass}">
+			<div class="page-input-sub">{$lng->admin_sub_pppass}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->admin_ttl_ppsign}</div>
+		<div class="page-input-content">
+			<input type="text" name="paypalsign" value="{$ppsign}">
+			<div class="page-input-sub">{$lng->admin_sub_ppsign}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->admin_ttl_ppsand}</div>
+		<div class="page-input-content">
+			<select name="paypalsand">
+				<option value="0" {$ppsandoff}>{$lng->off}</option>
+				<option value="1" {$ppsandon}>{$lng->on}</option>
+			</select>
+			<div class="page-input-sub">{$lng->admin_sub_ppsand}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->admin_ttl_currency}</div>
+		<div class="page-input-content">
+			<input type="text" name="currency" value="{$currency}">
+			<div class="page-input-sub">{$lng->admin_sub_currency}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->admin_ttl_pro_plan_month}</div>
+		<div class="page-input-content">
+			<input name="promonth" value="{$currentProMonth}">
+			<div class="page-input-sub">{$lng->admin_sub_pro_plan_month}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->admin_ttl_pro_plan_year}</div>
+		<div class="page-input-content">
+			<input name="proyear" value="{$currentProYear}">
+			<div class="page-input-sub">{$lng->admin_sub_pro_plan_year}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->admin_ttl_pro_track_size}</div>
+		<div class="page-input-content">
+			<input type="text" name="protracksize" value="{$protracksize}">
+			<div class="page-input-sub">{$lng->admin_sub_pro_track_size}</div>
+		</div>
+	</div>
+		
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->admin_ttl_pro_total_size}</div>
+		<div class="page-input-content">
+			<input type="text" name="protracktotal" value="{$protracktotal}">
+			<div class="page-input-sub">{$lng->admin_sub_pro_total_size}</div>
+		</div>
+	</div>
+</div>
+<div class="page-header">{$lng->standard_accounts}</div>
+<div class="page-inner">
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->admin_ttl_track_size}</div>
+		<div class="page-input-content">
+			<input type="text" name="tracksize" value="{$tracksize}">
+			<div class="page-input-sub">{$lng->admin_sub_track_size}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->admin_ttl_total_upload_size}</div>
+		<div class="page-input-content">
+			<input type="text" name="tracksizetotal" value="{$tracksizetotal}">
+			<div class="page-input-sub">{$lng->admin_sub_total_upload_size}</div>
+		</div>
+	</div>
+</div>
+<div class="divider"></div>
+<div class="page-inner">
+	<div class="page-input-title"></div><input type="submit" value="{$lng->save_changes}">
+</div>
+</form>

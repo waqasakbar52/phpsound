@@ -1,0 +1,21 @@
+<div class="go-pro-header">
+	<div class="go-pro-header-title">{$pro_title}</div>
+	<div class="go-pro-header-desc">{$pro_title_desc}</div>
+</div>
+<div class="page-content">
+	{$message}
+	<div class="feature-container">
+		<div class="feature-option">{$lng->pro_plan}</div>
+		<div class="plan-info">{$plan} ({$amount})</div>
+	</div>
+	<div class="feature-description">{$lng->pro_plan_desc}</div>
+	
+	<div class="feature-container">
+		<div class="feature-option">{$lng->valid}</div>
+		<div class="plan-info">{$daysleft}</div>
+	</div>
+	<div class="feature-description">{$lng->valid_desc} {$lng->expire_on} {$validuntil}</div>
+</div>
+<div class="page-content">
+	{$history}
+</div>

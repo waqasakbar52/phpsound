@@ -1,0 +1,91 @@
+{$message}
+<form action="{$url}/index.php?a=settings&b=notifications" method="post">
+<div class="page-inner">
+	{$token_input}
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_notificationl}</div>
+		<div class="page-input-content">
+			<select name="notificationl">
+				<option value="0" {$loff}>{$lng->off}</option>
+				<option value="1" {$lon}>{$lng->on}</option>
+			</select>
+			<div class="page-input-sub">{$lng->sub_notificationl}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_notificationc}</div>
+		<div class="page-input-content">
+			<select name="notificationc">
+				<option value="0" {$coff}>{$lng->off}</option>
+				<option value="1" {$con}>{$lng->on}</option>
+			</select>
+			<div class="page-input-sub">{$lng->sub_notificationc}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_notificationd}</div>
+		<div class="page-input-content">
+			<select name="notificationd">
+				<option value="0" {$doff}>{$lng->off}</option>
+				<option value="1" {$don}>{$lng->on}</option>
+			</select>
+			<div class="page-input-sub">{$lng->sub_notificationd}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_notificationf}</div>
+		<div class="page-input-content">
+			<select name="notificationf">
+				<option value="0" {$foff}>{$lng->off}</option>
+				<option value="1" {$fon}>{$lng->on}</option>
+			</select>
+			<div class="page-input-sub">{$lng->sub_notificationf}</div>
+		</div>
+	</div>
+</div>
+<div class="divider"></div>
+<div class="page-inner">
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_email_comment}</div>
+		<div class="page-input-content">
+			<select name="email_comment">
+				<option value="0" {$ecoff}>{$lng->off}</option>
+				<option value="1" {$econ}>{$lng->on}</option>
+			</select>
+			<div class="page-input-sub">{$lng->sub_email_comment}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_email_like}</div>
+		<div class="page-input-content">
+			<select name="email_like">
+				<option value="0" {$eloff}>{$lng->off}</option>
+				<option value="1" {$elon}>{$lng->on}</option>
+			</select>
+			<div class="page-input-sub">{$lng->sub_email_like}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_email_new_friend}</div>
+		<div class="page-input-content">
+			<select name="email_new_friend">
+				<option value="0" {$enfoff}>{$lng->off}</option>
+				<option value="1" {$enfon}>{$lng->on}</option>
+			</select>
+			<div class="page-input-sub">{$lng->sub_email_new_friend}</div>
+		</div>
+	</div>
+</div>
+<div class="divider"></div>
+<div class="page-inner">
+	<div class="page-input-title"></div>
+	<div class="page-input-content">
+		<input type="submit" value="{$lng->save_changes}" />
+	</div>
+	</form>
+</div>

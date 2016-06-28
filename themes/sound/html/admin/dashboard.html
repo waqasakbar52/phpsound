@@ -1,0 +1,37 @@
+<div class="page-inner">
+	<div class="page-input-container">
+		<div><strong>{$lng->at_a_glance}</strong></div>
+			<div class="dash-stats columns"><div class="dash-half"><div class="dash-values">{$users_today}</div>{$lng->users} {$users_percentage}</div><div class="dash-half"><ul class="chart">{$users_stats}</ul></div></div>
+			<div class="dash-stats columns"><div class="dash-half"><div class="dash-values">{$playlists_today}</div>{$lng->playlists} {$playlists_percentage}</div><div class="dash-half"><ul class="chart">{$playlists_stats}</ul></div></div>
+			<div class="dash-stats columns"><div class="dash-half"><div class="dash-values">{$messages_today}</div>{$lng->tracks} {$messages_percentage}</div><div class="dash-half"><ul class="chart">{$messages_stats}</ul></div></div>
+			<div class="dash-stats columns"><div class="dash-half"><div class="dash-values">{$comments_today}</div>{$lng->comments} {$comments_percentage}</div><div class="dash-half"><ul class="chart">{$comments_stats}</ul></div></div>
+			<div class="dash-stats columns"><div class="dash-half"><div class="dash-values">{$likes_today}</div>{$lng->likes} {$likes_percentage}</div><div class="dash-half"><ul class="chart">{$likes_stats}</ul></div></div>
+			<div class="dash-stats columns"><div class="dash-half"><div class="dash-values">{$downloads_today}</div>{$lng->downloads} {$downloads_percentage}</div><div class="dash-half"><ul class="chart">{$downloads_stats}</ul></div></div>
+			<div class="dashboard-info"></div>
+			<!--<div class="dash-stats columns"><div class="dash-values">{$online_users}</div>{$lng->online_users}</div>-->
+	</div>
+</div>
+<div class="divider"></div>
+<div class="page-inner">
+	<div class="page-input-container">
+		<div><strong>{$lng->site_info}</strong></div>
+		<div class="dashboard-info">
+			{$site_version}
+		</div>
+		<div class="dashboard-info">
+			{$site_loaded}
+		</div>
+	</div>
+</div>
+<div class="divider"></div>
+<div class="page-inner">
+	<div class="page-input-container">
+		<div><strong>{$lng->useful_links}</strong></div>
+		<div class="dashboard-info">
+			<a href="{$soft_url}/customize/themes" target="_blank">{$lng->get_themes}</a>
+		</div>
+		<div class="dashboard-info">
+			<a href="{$soft_url}/customize/languages" target="_blank">{$lng->get_languages}</a>
+		</div>
+	</div>
+</div>

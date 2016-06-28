@@ -1,0 +1,27 @@
+<div class="page-container">
+<div class="page-header">{$lng->edit_playlist} - {$title}</div>
+{$message}
+<form action="{$url}/index.php?a=playlist&id={$id}&edit=true" method="post">
+<div class="page-inner">	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->admin_ttl_title}</div>
+		<div class="page-input-content">
+			<input type="text" name="name" value="{$name}" />
+			<div class="page-input-sub"></div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_description}</div>
+		<div class="page-input-content">
+			<textarea class="ads" name="description">{$description}</textarea>
+			<div class="page-input-sub"></div>
+		</div>
+	</div>
+</div>
+<div class="divider"></div>
+<div class="page-inner">
+	<div class="page-input-title"></div><input type="submit" name="edit" value="{$lng->save}" />
+</div>
+</form>
+</div>

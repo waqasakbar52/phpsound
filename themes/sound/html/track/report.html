@@ -1,0 +1,35 @@
+<div class="page-container">
+<div class="page-header">{$lng->report_track} - {$url_title}</div>
+{$message}
+<form action="{$url}/index.php?a=track&id={$id}&type=report" method="post">
+<div class="page-inner">
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_description}</div>
+		<div class="page-input-content">
+			<textarea class="ads" name="description"></textarea>
+			<div class="page-input-sub">{$lng->report_description}</div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-content">
+			<div class="report-checkbox"><input type="checkbox" name="report1" id="report1" value="1"><label for="report1">{$lng->report1}</label></div>
+			<div class="report-checkbox"><input type="checkbox" name="report2" id="report2" value="1"><label for="report2">{$lng->report2}</label></div>
+			<div class="report-checkbox"><input type="checkbox" name="report3" id="report3" value="1"><label for="report3">{$lng->report3}</label></div>
+		</div>
+	</div>
+	
+	<div class="page-input-container">
+		<div class="page-input-title">{$lng->signature}</div>
+		<div class="page-input-content">
+			<input type="text" name="signature" />
+			<div class="page-input-sub">{$lng->sub_signature}</div>
+		</div>
+	</div>
+</div>
+<div class="divider"></div>
+<div class="page-inner">
+	<div class="page-input-title"></div><input type="submit" name="copyright" value="{$lng->send}" />
+</div>
+</form>
+</div>

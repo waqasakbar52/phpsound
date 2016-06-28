@@ -1,0 +1,18 @@
+{$message}
+<div class="page-inner">
+	<div class="page-input-container">
+		<div class="page-input-content page-input-left">
+				<input type="hidden" name="a" value="admin">
+				<input type="hidden" name="b" value="users">
+				<input type="text" name="category" id="category" value="" placeholder="{$lng->add_category}"> &nbsp; <div onclick="manage_categories('', 1)" class="button-normal" style="font-weight: bold;">{$lng->save}</div>
+				<div class="page-input-sub">{$lng->add_category_desc}</div>
+		</div>
+	</div>
+</div>
+<div class="divider"></div>
+<div class="list-content">
+	<div id="categories">
+		<div id="add-category"></div>
+		{$categories}
+	</div>
+</div>

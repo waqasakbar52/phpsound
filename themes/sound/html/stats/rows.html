@@ -1,0 +1,71 @@
+<div class="page-header">{$lng->statistics} - {$title}</div>
+	<div class="page-inner">
+	<div class="page-input-container">
+		<div class="stats-container three columns">
+			{$lng->plays}
+			<h3>{$plays}</h3>
+		</div>
+		<div class="stats-container three columns">
+			{$lng->likes}
+			<h3>{$likes}</h3>
+		</div>
+		<div class="stats-container three columns">
+			{$lng->comments}
+			<h3>{$comments}</h3>
+		</div>
+		<div class="stats-container three columns">
+			{$lng->downloads}
+			<h3>{$downloads}</h3>
+		</div>
+	</div>
+</div>
+<div class="divider"></div>
+<div class="page-inner">
+	<div class="edit-menu">
+		<div class="edit-menu-item edit-menu-item-active" id="stats-tracks">{$lng->tracks}</div>
+		<div class="edit-menu-item" id="stats-users">{$lng->users}</div>
+		<div class="edit-menu-item" id="stats-geographic">{$lng->geographic}</div>
+	</div>
+	<div class="stats-tracks" style="display: block;">
+		<div class="page-input-container">
+			<div class="stats-container four columns">
+				<div class="stats-column-title">{$lng->most_played}</div>
+				{$most_played}
+			</div>
+			<div class="stats-container four columns">
+				<div class="stats-column-title">{$lng->most_liked}</div>
+				{$most_liked}
+			</div>
+			<div class="stats-container four columns">
+				<div class="stats-column-title">{$lng->most_commented}</div>
+				{$most_commented}
+			</div>
+		</div>
+	</div>
+	<div class="stats-users" style="display: none;">
+		<div class="page-input-container">
+			<div class="stats-container six columns">
+				<div class="stats-column-title">{$lng->who_played_most}</div>
+				{$played_most}
+			</div>
+			<div class="stats-container six columns">
+				<div class="stats-column-title">{$lng->who_downloaded_most}</div>
+				{$downloaded_most}
+			</div>
+		</div>
+	</div>
+	<div class="stats-geographic" style="display: none;">
+		<div class="page-input-container">
+			<div class="stats-container six columns">
+				<div class="stats-column-title">{$lng->top_countries}</div>
+				{$top_countries}
+			</div>
+			<div class="stats-container six columns">
+				<div class="stats-column-title">{$lng->top_cities}</div>
+				{$top_cities}
+			</div>
+		</div>
+	</div>
+	{$go_pro}
+	<div class="small-info">{$lng->stats_note}</div>
+</div>

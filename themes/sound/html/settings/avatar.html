@@ -1,0 +1,28 @@
+{$message}
+<div class="page-inner">
+	<div class="page-input-title-img">{$image}</div>
+	<div class="page-input-content">
+		<div class="page-input-container">
+			<form id="upload" class="uploadForm" action="{$url}/index.php?a=settings&b=avatar" method="POST" enctype="multipart/form-data">
+				{$token_input}
+				<input type="file" id="avatarselect" name="avatarselect[]" accept="image/*"><br /><br />
+				<input type="submit" value="{$lng->ttl_upload_photo}">
+			</form>
+		</div>
+	</div>
+</div>
+<div class="divider"></div>
+<div class="page-inner"><div class="page-title">{$lng->user_desc_cover}</div></div>
+<div class="divider"></div>
+<div class="page-input-title-img-wall">{$cover}</div>
+<div class="page-inner">
+	<div class="page-input-content">
+		<div class="page-input-container">
+			<form id="upload" class="uploadForm" action="{$url}/index.php?a=settings&b=avatar" method="POST" enctype="multipart/form-data">
+				{$token_input}
+				<input type="file" id="coverselect" name="coverselect[]" accept="image/*"><br /><br />
+				<input type="submit" value="{$lng->ttl_upload_cover}">
+			</form>
+		</div>
+	</div>
+</div>

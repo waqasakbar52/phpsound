@@ -1,0 +1,139 @@
+<div class="page-container">
+	<div class="page-header">{$page_title} {$url_title}</div>
+	<div id="upload-message">{$message}</div>
+	<form action="{$form_url}" enctype="multipart/form-data" method="post" id="track-upload" onsubmit="{$onclick}">
+		{$token_input}
+		<div class="track-info-container">
+			<div class="edit-menu">
+				<div class="edit-menu-item edit-menu-item-active" id="edit-general">{$lng->general_link}</div>
+				<div class="edit-menu-item" id="edit-metadata">{$lng->metadata}</div>
+				<div class="edit-menu-item" id="edit-permissions">{$lng->permissions}</div>
+			</div>
+			<div class="track-info-art">
+				<div><img src="{$url}/thumb.php?src={$art}&t=m&w=112&h=112"></div>
+				<div class="button-normal upload-btn" id="upload-art-btn">
+					<span id="cover-art" class="upload-btn-text">{$lng->upload_image}</span>
+					<span id="cover-art-sel" class="upload-btn-text" style="display: none;">{$lng->image_selected}</span>
+					<input type="file" name="art[]" id="upload-art" accept="image/*">
+				</div>
+				<div class="button-normal upload-btn" id="upload-track-btn" style="display: {$display}">
+					<span id="track-file" class="upload-btn-text">{$lng->upload_track}</span>
+					<span id="track-file-sel" class="upload-btn-text" style="display: none;">{$lng->track_selected}</span>
+					<input type="file" name="track[]" id="upload-track" accept="audio/*" multiple>
+				</div>
+			</div>
+			<div class="edit-general">
+				<div class="track-info-inputs">
+					<div class="track-info-input">
+						<div class="track-info-title">{$lng->admin_ttl_title} <span class="required">*</span></div>
+						<input type="text" name="title[]" id="track-title" value="{$title}">
+					</div>
+					<div class="track-info-input">
+						<div class="track-info-title">{$lng->ttl_description}</div>
+						<textarea name="description">{$description}</textarea>
+					</div>
+					<div class="track-info-input">
+						<div class="track-info-title">{$lng->tags} <span class="required">*</span></div>
+						<input type="text" name="tag" value="{$tag}" placeholder="{$lng->edit_tags}">
+					</div>
+				</div>
+			</div>
+			<div class="edit-metadata" style="display: none">
+				<div class="track-info-inputs">
+					<div class="track-info-input">
+						<div class="track-info-title">{$lng->buy_link}</div>
+						<input type="text" name="buy" value="{$buy}">
+					</div>
+					<div class="track-info-input">
+						<div class="track-info-title">{$lng->record_label}</div>
+						<input type="text" name="record" value="{$record}">
+					</div>
+					<div class="track-info-input">
+						<div class="track-info-title">{$lng->release_date}</div>
+						<select name="day">
+							{$days}
+						</select>
+						<select name="month">
+							{$months}
+						</select>
+						<select name="year">
+							{$years}
+						</select>
+					</div>
+					<div class="track-info-input">
+						<div class="track-info-title">{$lng->license}</div> 
+						<div class="track-info-radio"><input type="radio" name="license" value="0" id="selection-ar" {$ar}> <label for="selection-ar">{$lng->all_rights}</label></div>
+						<div class="track-info-radio"><input type="radio" name="license" value="1" id="selection-cc" {$cc}> <label for="selection-cc">{$lng->creative_commons}</label></div>
+						<input type="hidden" name="license-nc" id="input-nc" value="{$nc}">
+						<input type="hidden" name="license-nd-sa" id="input-nd-sa" value="{$nd_sa}">
+						<br>
+						<div id="license-container" class="license-container">
+							<div>
+								<div class="license-box-container column">
+									<div class="license-box-content license-box-active" id="license-at">
+										<div class="license-box-title">{$lng->license_at}</div>
+									</div>
+								</div>
+								<div class="license-box-container column">
+									<div class="license-box-content" id="license-nc">
+										<div class="license-box-title">{$lng->license_nc}</div>
+									</div>
+								</div>
+							</div>
+							<div>
+								<div class="license-box-container column">
+									<div class="license-box-content" id="license-nd">
+										<div class="license-box-title">{$lng->license_nd}</div>
+									</div>
+								</div>
+								<div class="license-box-container column">
+									<div class="license-box-content" id="license-sa">
+										<div class="license-box-title">{$lng->license_sa}</div>
+									</div>
+								</div>
+							</div>
+							<div class="license-box-desc license-at">{$lng->license_at_desc}</div>
+							<div class="license-box-desc license-nc">{$lng->license_nc_desc}</div>
+							<div class="license-box-desc license-nd">{$lng->license_nd_desc}</div>
+							<div class="license-box-desc license-sa">{$lng->license_sa_desc}</div>
+							<br>
+							<a href="http://creativecommons.org/about/license/" target="_blank" title="{$lng->creative_commons}" rel="nofollow">
+								<div class="license-icon license-cc-icon"></div>
+								<div class="license-icon license-at-icon"></div>
+								<div class="license-icon license-nc-icon"></div>
+								<div class="license-icon license-nd-icon"></div>
+								<div class="license-icon license-sa-icon"></div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="edit-permissions" style="display: none">
+				<div class="track-info-inputs">
+					<div class="track-info-input">
+						<div class="track-info-title">{$lng->visibility}</div>
+						<select name="public">
+							<option value="0"{$poff}>{$lng->opt_private}</option>
+							<option value="1"{$pon}>{$lng->opt_public}</option>
+						</select>
+					</div>
+					<div class="track-info-input">
+						<div class="track-info-title">{$lng->allow_downloads}</div>
+						<select name="download">
+							<option value="0"{$doff}>{$lng->off}</option>
+							<option value="1"{$don}>{$lng->on}</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="divider"></div>
+		<div id="extra-files"></div>
+		<div class="track-info-container">
+			<div class="track-info-inputs">
+				<input type="submit" name="save" value="{$btntext}" id="upload-button">
+				<div id="upload-pb" style="display: none;"><div id="upload-text" class="upload-text">{$lng->uploading} <span id="upload-pvt"></span>%</div><div id="upload-processing" class="upload-text" style="display: none;">{$lng->processing}</div><div class="upload-status-bar"><div class="upload-status-bar-percentage" id="upload-pbv"></div></div></div>
+			</div>
+		</div>
+	</form>
+</div>

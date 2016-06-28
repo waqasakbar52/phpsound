@@ -1,0 +1,78 @@
+<div class="menu-image"><div class="menu_arrow"></div><div class="menu_img"><img src="{$url}/thumb.php?src={$avatar}&t=a&w=50&h=50" title="{$realname}"></div></div>
+<a onclick="showNotification('', '1')"><div class="menu_btn" id="notifications_btn" title="{$lng->title_notifications}" rel="loadpage"><img src="{$url}/{$theme_url}/images/notification.png" id="notifications_img"></div></a>
+<a href="{$url}/index.php?a=messages" id="messages_url" rel="loadpage"><div class="menu_btn" id="messages_btn" title="{$lng->title_messages}"><img src="{$url}/{$theme_url}/images/message.png"></div></a>
+<div id="menu-dd-container" class="menu-dd-container">
+	<div class="menu-dd-content">
+		{$links}
+	</div>
+</div>
+{$admin_url}
+<script type="text/javascript">
+function checkNewNotifications(x) {
+	// Retrieve the current notification values
+	xy = $("#notifications_btn .notifications-number").html();
+	xz = $("#messages_btn .notifications-number").html();
+	
+	// If there are not current values, reset them to 0
+	if(!xy) {
+		xy = 0;
+	}
+	if(!xz) {
+		xz = 0;
+	}
+	$.ajax({
+		type: "POST",
+		url: "{$url}/requests/check_notifications.php",
+		data: "for=1&token_id="+token_id,
+		success: function(html) {
+			// If the response does not include "No notifications" and is not empty show the notification
+			if(html.indexOf("{$lng->no_notifications}") == -1 && html !== "" && html !== "0") {
+				result = jQuery.parseJSON(html);
+				if(result.response.global > 0) {
+					$("#notifications_btn").html(getNotificationImage()+'<span class="notificatons-number-container"><span class="notifications-number">'+result.response.global+'</span></span>');
+				} else {
+					$("#notifications_btn").html(getNotificationImage());
+				}
+				if(result.response.messages > 0) {
+					$("#messages_btn").html(getMessagesImageUrl(1)+'<span class="notificatons-number-container"><span class="notifications-number">'+result.response.messages+'</span></span>');
+					$("#messages_url").attr("onclick", "showNotification('', '2')");
+					$("#messages_url").removeAttr("href rel");
+				} else {
+					$("#messages_btn").html(getMessagesImageUrl(1));
+					$("#messages_url").removeAttr("onclick");
+					$("#messages_url").attr("href", getMessagesImageUrl());
+				}
+				
+				// If the new value is higher than the current one, and the current one is not equal to 0
+				if(result.response.global > xy && xy != 0 || result.response.global == 1 && xy == 0) {
+					checkAlert();
+				} else if(result.response.messages > xz && xz != 0 || result.response.messages == 1 && xz == 0) {
+					checkAlert();
+				}
+			}
+			stopNotifications = setTimeout(checkNewNotifications, {$intervaln});
+	   }
+	});
+	notificationState = true;
+}
+checkNewNotifications();
+
+function checkAlert() {
+	if(!document.hasFocus()) {						
+		// If the current document title doesn\'t have an alert, add one
+		if(document.title.indexOf("(!)") == -1) {
+			document.title = "(!) " + document.title;
+		}
+	}
+}
+function getNotificationImage() {
+	return '<img src="{$url}/{$theme_url}/images/notification.png">';
+}
+function getMessagesImageUrl(x) {
+	if(x) {
+		return '<img src="{$url}/{$theme_url}/images/message.png">';
+	} else {
+		return '{$url}/index.php?a=messages';
+	}
+}
+</script>

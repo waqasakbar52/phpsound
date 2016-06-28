@@ -1,0 +1,189 @@
+<div class="page-inner" style="padding-bottom: 0;">
+	<div class="edit-menu">
+		<div class="edit-menu-item edit-menu-item-active" id="edit-general">{$lng->general}</div>
+		<div class="edit-menu-item" id="edit-payments"{$hide_p}>{$lng->payments}</div>
+		<div class="edit-menu-item" id="edit-reports"{$hide_r}>{$lng->reports}</div>
+		<div class="edit-menu-item" id="edit-delete">{$lng->delete}</div>
+	</div>
+</div>
+<div class="edit-general" style="display: block;">
+	{$status}
+	{$message}
+	<div class="page-inner">
+		{$username}
+	</div>
+	<div class="divider"></div>
+	<form action="{$url}/index.php?a=admin&b=users&id={$idu}" method="post">
+	{$token_input}
+	<div class="page-inner">
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->ttl_first_name}</div>
+			<div class="page-input-content">
+				<input type="text" name="first_name" value="{$currentFirstName}" />
+				<div class="page-input-sub">{$lng->sub_first_name}</div>
+			</div>
+		</div>
+		
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->ttl_last_name}</div>
+			<div class="page-input-content">
+				<input type="text" name="last_name" value="{$currentLastName}" />
+				<div class="page-input-sub">{$lng->sub_last_name}</div>
+			</div>
+		</div>
+
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->ttl_email}</div>
+			<div class="page-input-content">
+				<input type="text" name="email" value="{$currentEmail}" />
+				<div class="page-input-sub">{$lng->sub_email}</div>
+			</div>
+		</div>
+
+		<div class="page-input-container">
+		<div class="page-input-title">{$lng->ttl_country}</div>
+			<div class="page-input-content">
+			<select name="country">
+				{$countries}
+			</select>
+			<div class="page-input-sub">{$lng->sub_country}</div>
+			</div>
+		</div>
+
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->ttl_city}</div>
+			<div class="page-input-content">
+				<input type="text" name="city" value="{$currentCity}" />
+				<div class="page-input-sub">{$lng->sub_city}</div>
+			</div>
+		</div>
+
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->ttl_website}</div>
+			<div class="page-input-content">
+				<input type="text" name="website" value="{$currentWebsite}" />
+				<div class="page-input-sub">{$lng->sub_website}</div>
+			</div>
+		</div>
+	</div>
+	<div class="divider"></div>
+	<div class="page-inner">
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->ttl_facebook}</div>
+			<div class="page-input-content">
+				<input type="text" name="facebook" value="{$currentFacebook}" />
+				<div class="page-input-sub">{$lng->sub_facebook}</div>
+			</div>
+		</div>
+
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->ttl_twitter}</div>
+			<div class="page-input-content"><input type="text" name="twitter" value="{$currentTwitter}" />
+			<div class="page-input-sub">{$lng->sub_twitter}</div>
+			</div>
+		</div>
+
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->ttl_google}</div>
+			<div class="page-input-content"><input type="text" name="gplus" value="{$currentGplus}" />
+			<div class="page-input-sub">{$lng->sub_google}</div>
+			</div>
+		</div>
+		
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->ttl_youtube}</div>
+			<div class="page-input-content"><input type="text" name="youtube" value="{$currentYouTube}" />
+			<div class="page-input-sub">{$lng->sub_youtube}</div>
+			</div>
+		</div>
+		
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->ttl_soundcloud}</div>
+			<div class="page-input-content"><input type="text" name="soundcloud" value="{$currentSoundCloud}" />
+			<div class="page-input-sub">{$lng->sub_soundcloud}</div>
+			</div>
+		</div>
+		
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->ttl_myspace}</div>
+			<div class="page-input-content"><input type="text" name="myspace" value="{$currentMySpace}" />
+			<div class="page-input-sub">{$lng->sub_myspace}</div>
+			</div>
+		</div>
+		
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->ttl_lastfm}</div>
+			<div class="page-input-content"><input type="text" name="lastfm" value="{$currentLastfm}" />
+			<div class="page-input-sub">{$lng->sub_lastfm}</div>
+			</div>
+		</div>
+		
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->ttl_vimeo}</div>
+			<div class="page-input-content"><input type="text" name="vimeo" value="{$currentVimeo}" />
+			<div class="page-input-sub">{$lng->sub_vimeo}</div>
+			</div>
+		</div>
+		
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->ttl_tumblr}</div>
+			<div class="page-input-content"><input type="text" name="tumblr" value="{$currentTumblr}" />
+			<div class="page-input-sub">{$lng->sub_tumblr}</div>
+			</div>
+		</div>
+	</div>
+	<div class="divider"></div>
+	<div class="page-inner">
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->ttl_description}</div>
+			<div class="page-input-content">
+				<textarea class="ads" name="description">{$currentDescription}</textarea>
+				<div class="page-input-sub">{$lng->sub_description}</div>
+			</div>
+		</div>
+	</div>
+	<div class="divider"></div>
+	<div class="page-inner">
+		<div class="page-input-container">
+			<div class="page-input-title">{$lng->join_date}</div>
+			<div class="page-input-contesnt">
+				<input type="text" name="date" value="{$join_date}" disabled>
+			</div>
+		</div>
+	</div>
+	<div class="divider"></div>
+	<div class="page-inner">
+		<div class="page-input-title"></div><input type="submit" value="{$lng->save_changes}">
+	</div>
+	</form>
+</div>
+<div class="edit-payments" style="display: none;">
+	<div class="page-inner">
+		<strong>{$lng->transactions_history}</strong>
+	</div>
+	<div class="divider"></div>
+	{$history}
+</div>
+<div class="edit-reports" style="display: none;">
+	<div class="page-inner">
+		<strong>{$lng->valid_rcs}</strong>
+	</div>
+	<div class="divider"></div>
+	{$reports}
+</div>
+<div class="edit-delete" style="display: none;">
+	<div class="page-inner">
+		<strong>{$lng->delete_account}</strong>
+	</div>
+	<div class="divider"></div>
+	<div class="page-inner">
+		<a href="{$url}/index.php?a=admin&b=users&delete={$idu}&deleted={$user}&token_id={$token_id}"><input type="submit" value="{$lng->delete}"></a>
+	</div>
+	<div class="page-inner">
+		<strong>{$status_desc}</strong>
+	</div>
+	<div class="divider"></div>
+	<div class="page-inner">
+		<a href="{$url}/index.php?a=admin&b=users&id={$idu}&suspend={$suspend}&token_id={$token_id}"><input type="submit" value="{$suspended}"></a>
+	</div>
+</div>

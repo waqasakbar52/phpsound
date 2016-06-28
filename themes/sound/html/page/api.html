@@ -1,0 +1,96 @@
+<div class="row-body{$content_class}">
+	<div class="body-content">
+		<div class="nine columns" id="messages">
+			<div class="page-container">
+			<div class="page-content">
+			<div class="page-header">{$header}</div>
+				<div class="page-inner">
+					<div class="row">
+						Our API allows you to retrieve informations from our website via <strong>GET</strong> request and supports the following query parameters:
+						<br><br>
+						<table border="1" width="100%">
+							<tr>
+								<td width="20%" valign="top">Name</td>
+								<td width="20%" valign="top">Meaning</td>
+								<td width="60%" valign="top">Description</td>
+							</tr>
+							<tr>
+								<td width="20%" valign="top"><strong>t (required)</strong></td>
+								<td width="20%" valign="top">Query type.</td>
+								<td width="60%" valign="top">This parameter specify the type of the query, <strong><code>u</code></strong> is for profile informations, <strong><code>t</code></strong> is for tracks informations.</td>
+							</tr>
+							<tr>
+								<td width="20%" valign="top"><strong>q (required)</strong></td>
+								<td width="20%" valign="top">Requested <strong>username</strong>.</td>
+								<td width="60%" valign="top">The <code>t</code> parameter supports two values: 
+								<ul>
+									<li>u = <strong>username</strong> [returns basic profile informations containing the following]
+										<ul>
+											<li><code>id</code> = returns the unique user id</li>
+											<li><code>username</code> = returns the username</li>
+											<li><code>first_name</code> = returns the first name</li>
+											<li><code>last_name</code> = returns the last bame</li></li>
+											<li><code>website</code> = returns the website</li></li>
+											<li><code>country</code> = returns the country</li></li>
+											<li><code>city</code> = returns the city</li></li>
+											<li><code>image</code> = returns the profile avatar image</li></li>
+											<li><code>cover</code> = returns the profile cover image</li></li>
+										</ul>
+									</li>
+										
+									<li>t = <strong>username</strong> [returns a list of latest 20 tracks uploaded by a user containing the following]
+										<ul>
+											<li><code>id</code> = returns the unique track id</li>
+											<li><code>by</code> = returns the unique user id</li>
+											<li><code>title</code> = returns the track title</li>
+											<li><code>description</code> = returns the description of the track</li>
+											<li><code>art</code> = returns the track artwork image</li>
+											<li><code>tag</code> = returns the tag list</li>
+											<li><code>buy</code> = returns the purchase url</li>
+											<li><code>record</code> = returns the record label</li></li>
+											<li><code>release</code> = returns the release date</li></li>
+											<li><code>license</code> = returns the license type</li></li>
+											<li><code>time</code> = returns the date time when was published</li>
+											<li><code>likes</code> = returns the number of likes</li>
+											<li><code>views</code> = returns the number of views (times played)</li>
+										</ul>
+									</li>
+								</ul></td>
+							</tr>
+						</table>
+						<br>
+						<div class="divider"></div>
+						<br>
+						<div id="jump-url"><strong>Examples of requests:</strong></div><br>
+						For profile information of a user:
+						<br>
+						<code class="api-request">{$url}/api.php?t=u&q=USERNAME</code>
+						<br><br>
+						For a list of latest 20 tracks uploaded by a user:
+						<br>
+						<code class="api-request">{$url}/api.php?t=t&q=USERNAME</code>
+						<br><br>
+						<div class="divider"></div>
+						<br>
+						An example of <strong>json</strong> decoding would be the following PHP code:
+						<br><br>
+						<code>
+						&lt;?php<br>
+							header('Content-Type: text/plain; charset=utf-8;');
+							<br>
+							$file = file_get_contents("{$url}/api.php?t=t&q=USERNAME");<br>
+							print_r(json_decode($file));<br>
+						?&gt;
+						</code>
+						
+						<br>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="three columns">
+			{$sidebar}
+		</div>
+	</div>
+</div>
